@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>Mehsullarimiz</h1>
+
+<div class="products">
+    <ul>
+        {% for product in products %}
+          <li>
+            <h3>{{product.company}}</h3>
+            <h4>{{product.country}}</h4>
+            <p>{{product.name}}</p>
+            <i>{{product.price}}</i>
+            <strong>{{product.quality}}</strong>
+            <p>{{product.end_date}}</p>
+          </li>
+          <br>
+          <hr>
+          <br>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock body %}
