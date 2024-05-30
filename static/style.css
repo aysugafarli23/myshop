@@ -62,3 +62,47 @@ body {
     margin: 30px 0px;
     padding: 20px;
 }
+
+.btn{
+    color: coral;
+    background-color:green;
+    padding: 10px 20px;
+    border-radius: 45px;
+    border: none;
+}
+
+.message-context{
+    text-align:center;
+    font-size: 20px;
+    font-weight:700 ;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 20px;
+    margin: 15px 0px;
+    border-radius: 45px;
+}
+
+.success{
+    background-color: rgb(141, 189, 74);
+    color: coral;
+}
+
+.success span{
+    color: yellow;
+    letter-spacing: 0.5em;
+    font-size: 30px;
+    text-transform: capitalize;
+}
+
+.error{
+    background-color: coral;
+    color:  rgb(141, 189, 74) ;
+}
+
+.password__error{
+    background-color: #f8d7da;
+    color: #E63726;
+    border:5px dotted green;
+    border-radius: 45px;
+    margin: 20px;
+    padding: 10px 20px;
+}

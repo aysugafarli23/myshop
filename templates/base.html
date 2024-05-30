@@ -27,6 +27,17 @@
       </div>
     </div>
 
+
+  {% if messages %}
+      {% for message in messages %}
+        {% if message.tags == "error" %}
+          <div class="alert_error">{{message}}</div>
+        {% else %}
+          <div class="alert_success">{{message}}</div>
+        {% endif %}
+    {% endfor %}
+  {% endif %}
+
     <div class="container">
       {% block body %}
 

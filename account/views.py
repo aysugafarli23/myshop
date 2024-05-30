@@ -14,6 +14,7 @@ def register__view(request):
         newUser = User(username = username)
         newUser.set_password(password)
         
+        
         newUser.save()
         
         login(request, newUser)
@@ -44,4 +45,5 @@ def login__view(request):
         
         
 def logout__view(request):
-    return render(request, 'logout.html')
+    logout(request)
+    return redirect("home")
