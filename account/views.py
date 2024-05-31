@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 # Create your views here.
 def register__view(request):
@@ -14,13 +15,19 @@ def register__view(request):
         newUser = User(username = username)
         newUser.set_password(password)
         
+        if len(username) < 3:
+          messages.error(request, "İstifadəçi adı ən az 3 hərfli olmalıdır!")
+        else:
+            
+            newUser.save()
+            messages.success(request, "Siz uğurla qeydiyyatdan keçdiniz!")
+            
+            login(request, newUser)
+            return redirect("home")
         
-        newUser.save()
         
-        login(request, newUser)
-        return redirect("home")
-
     context = {"form": form}
+    messages.info(request, "Sayta daxil olmaq üçün qeydiyyatdan keçməlisiniz!")
     return render(request, "register.html", context)
 
 
@@ -34,6 +41,7 @@ def login__view(request):
         password = form.cleaned_data.get("password")
         
         user = authenticate(username = username, password = password)
+        messages.success(request, f"Siz uğurla sayta daxil oldunuz {username}!")
         
         if user is None:
             return render(request,"login.html", context)
@@ -41,8 +49,7 @@ def login__view(request):
         return redirect("home")
     return render(request,"login.html", context)
             
-        
-        
+    
         
 def logout__view(request):
     logout(request)

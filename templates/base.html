@@ -28,7 +28,7 @@
     </div>
 
 
-  {% if messages %}
+  {% comment %} {% if messages %}
       {% for message in messages %}
         {% if message.tags == "error" %}
           <div class="alert_error">{{message}}</div>
@@ -36,6 +36,14 @@
           <div class="alert_success">{{message}}</div>
         {% endif %}
     {% endfor %}
+  {% endif %} {% endcomment %}
+
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
   {% endif %}
 
     <div class="container">

@@ -6,12 +6,12 @@
 
 {% block body %}
     <h2>Register Page</h2>
-    {% if form.password != form.confirm %}
+    {% if request.form.password != request.form.confirm %}
         <div class="password__error">
         <h2>Daxil etdiyiniz sifreler eyni deyil!</h2>
         </div>
  {% endif %}  
-   
+
 
 
     <form method="post">
