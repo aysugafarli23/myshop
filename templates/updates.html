@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h2>Mehsul detallarini deyisin</h2>
+
+<form  method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    {{form.media}}
+
+    <button class="btn" >Yenile</button>
+</form>
+{% endblock body %}

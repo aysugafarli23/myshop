@@ -41,7 +41,7 @@ def login__view(request):
         password = form.cleaned_data.get("password")
         
         user = authenticate(username = username, password = password)
-        messages.success(request, f"Siz uğurla sayta daxil oldunuz {username}!")
+        messages.success(request, f"Siz uğurla sayta daxil oldunuz {username.capitalize()}!")
         
         if user is None:
             return render(request,"login.html", context)

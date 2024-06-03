@@ -1,9 +1,5 @@
 {% extends "base.html" %}
 
-{% block page__title %}
-    Register Page
-{% endblock page__title %}
-
 {% block body %}
     <h2>Register Page</h2>
     {% if request.form.password != request.form.confirm %}
