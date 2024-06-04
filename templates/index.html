@@ -1,5 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block body %}
-<h3>Ana səhifə</h3>
+
+
+
+
+{% if request.user.is_authenticated %}
+  <div class="messages success">
+    <h2>Xos gelmisiniz ,<span> {{request.user.username}}</span></h2> 
+  </div>
+{% else %}
+  <div class="messages error">
+    <h2>Sayta giris etmemisiniz!</h2>
+  </div>
+{% endif %}
+
+<div class="intro">
+    <h1>Welcome to NAMNAM Store!</h1>
+  </div>
+  
+
 {% endblock body %}

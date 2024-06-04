@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Products
+from django.urls import reverse
+from .models import Products, Comment
 from .forms import ProductsForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -26,9 +27,26 @@ def contact__view(request):
 
 @login_required(login_url = "account:login")
 def products__view(request):
+    keyword = request.GET.get("keyword")
+    if keyword:
+        products = Products.objects.filter(name__contains =keyword)
+        return render(request, 'products.html', {"products": products})
+    
     products = Products.objects.all()
-    context = {"products": products}
-    return render (request, 'products.html',  context)
+    return render (request, 'products.html',  {"products": products})
+
+@login_required(login_url="account:login")
+def product__details__view(request,id):
+    # product = Products.objects.filter(id = id).first()
+    product = get_object_or_404(Products, id=id)
+    comments = Comment.objects.filter(product=product)
+    
+    context = {
+        "product": product,
+        "comments":comments
+    }
+    
+    return render(request, 'productdetails.html', context)
 
 @login_required(login_url="account:login")
 def addproducts__view(request):
@@ -73,3 +91,21 @@ def dashboard__view(request):
     products = Products.objects.filter(company = request.user)
     context = {"products": products}
     return render(request, "dashboard.html",context)
+
+@login_required(login_url="account:login")
+def addcomment__view(request, id):
+    product = get_object_or_404(Products, id=id)
+    
+    if request.method =="POST":
+        comment_author = request.POST.get('comment_author')
+        comment_content = request.POST.get('comment_content')
+        
+        newComment = Comment(comment_author = comment_author, comment_content = comment_content)
+        newComment.product = product
+        newComment.save()
+        messages.success(request, "Reyiniz elave olundu...")
+        
+    return redirect(reverse("product-details", kwargs={"id":id}))
+    
+    
+     

@@ -13,6 +13,7 @@ body {
 
 }
 
+
 .container{
     width: 1200px;
     max-width: 90%;
@@ -109,31 +110,4 @@ body {
     color: greenyellow;
     padding: 25px;
     border-radius: 45px;
-}
-
-
-/* 404 style codes */
-.error_404 {
-    text-align: center;
-    max-width: 600px;
-}
-
-.error_404 .emoji {
-    font-size: 8rem;
-    margin-bottom: 20px;
-}
-
-.error_404 h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-
-.error_404 p {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-.error_404 .btn {
-    font-size: 1.25rem;
-    padding: 10px 20px;
 }

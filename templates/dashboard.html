@@ -21,12 +21,13 @@
           <li>
             <h3>{{product.company}}</h3>
             <h4>{{product.country}}</h4>
-            <p>{{product.name}}</p>
+            <a href=" {% url 'product-details' product.id %} "><p>{{product.name}}</p></a>
             <i>{{product.price}}</i>
-            <strong>{{product.quality |safe }}</strong>
+           <strong>{{product.quality |safe }}</strong>
             <p>{{product.end_date}}</p> <br>
             <a href="{% url "update" product.id %}"><i class="fa-solid fa-marker"></i></a>
             <a href="{% url "delete" product.id %}"><i class="fa-solid fa-trash"></i></a>
+            <a href="{% url "product-details" product.id %}"><i class="fa-solid fa-comment"></i></a>
           </li>
           <br><br>
           <hr>
@@ -35,7 +36,7 @@
     </ul>
 </div>
 
-<a href="{% url 'addproduct' %}"><button class="btn">Məhsul əlavə et</button></a>
+<a class="btn" href="{% url 'addproduct' %}">Məhsul əlavə et</a>
 
 
 {% endblock body %}

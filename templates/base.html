@@ -11,50 +11,52 @@
     <title>MyShop</title>
   </head>
   <body>
-    <div class="navbar">
-      <div class="nav__logo">
-        <img src="{% static 'mylogo.jpg' %}" alt="">
-      </div>
-      <div class="nav__links">
-        <ul>
-            <li><a href="{% url "home" %}">Home</a></li>
-            <li><a href="{% url "about" %}">About</a></li>
-            <li><a href="{% url "contact" %}">Contact</a></li>
-            {% if request.user.is_authenticated %}
-            <li><a href=" {% url "products" %} ">Mehsullar</a></li>
-            <li><a href=" {% url "dashboard" %} "><i class="fa-solid fa-user"></i></a></li>
-            <li><a href="{% url "account:logout" %}"><i class="fa-solid fa-right-from-bracket"></i></a></li>   
-            {% else %}  
-            <li><a href="{% url "account:login" %}">Login</a></li>
-            <li><a href="{% url "account:register" %}">Register</a></li>       
-            {% endif %}
-            </ul>
-      </div>
-    </div>
-
-
-  {% comment %} {% if messages %}
-      {% for message in messages %}
-        {% if message.tags == "error" %}
-          <div class="alert_error">{{message}}</div>
-        {% else %}
-          <div class="alert_success">{{message}}</div>
-        {% endif %}
-    {% endfor %}
-  {% endif %} {% endcomment %}
-
-  {% if messages %}
-  <ul class="messages">
-      {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-      {% endfor %}
-  </ul>
-  {% endif %}
-
     <div class="container">
-      {% block body %}
+      <div class="navbar">
+        <div class="nav__logo">
+          <img src="{% static 'mylogo.jpg' %}" alt="">
+        </div>
+        <div class="nav__links">
+          <ul>
+              <li><a href="{% url "home" %}">Home</a></li>
+              <li><a href="{% url "about" %}">About</a></li>
+              <li><a href="{% url "contact" %}">Contact</a></li>
+              {% if request.user.is_authenticated %}
+              <li><a href=" {% url "products" %} ">Mehsullar</a></li>
+              <li><a href=" {% url "dashboard" %} "><i class="fa-solid fa-user"></i></a></li>
+              <li><a href="{% url "account:logout" %}"><i class="fa-solid fa-right-from-bracket"></i></a></li>   
+              {% else %}  
+              <li><a href="{% url "account:login" %}">Login</a></li>
+              <li><a href="{% url "account:register" %}">Register</a></li>       
+              {% endif %}
+              </ul>
+        </div>
+      </div>
+  
+      
+          {% comment %} {% if messages %}
+              {% for message in messages %}
+                {% if message.tags == "error" %}
+                  <div class="alert_error">{{message}}</div>
+                {% else %}
+                  <div class="alert_success">{{message}}</div>
+                {% endif %}
+            {% endfor %}
+          {% endif %} {% endcomment %}
+    
+          {% if messages %}
+              <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+  
+     
+        {% block body %}
+  
+        {% endblock body %}
 
-      {% endblock %}
     </div>
   </body>
 </html>

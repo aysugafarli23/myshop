@@ -28,9 +28,11 @@ urlpatterns = [
     path("contact/", contact__view, name ="contact"),
     path("account/", include('account.urls')),
     path("products/", products__view, name="products"),
+    path("product-details/<int:id>", product__details__view, name="product-details"),
     path("addproduct/", addproducts__view, name="addproduct"),
     path("update/<int:id>", updateproducts__view, name="update"),
     path("delete/<int:id>", deleteproducts__view, name="delete"),
+    path("comment/<int:id>", addcomment__view, name="addcomment"),
     path("dashboard/", dashboard__view, name="dashboard"),
     path('ckeditor/', include('ckeditor_uploader.urls')),
    

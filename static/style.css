@@ -10,13 +10,36 @@ body {
     background-color: greenyellow;
     color: white;
     margin-left: 3em;
+}
+.intro{
+    width: 100%;
+    height: calc(100vh - 200px);
+    margin: 10px 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("/media/uploads/2024/06/04/citrus.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: rgb(23, 22, 22,0.1);
+}
 
+.intro h1{
+    text-align: center;
+    font-size: 60px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 900;
+    transform: translateY(250px);
+}
+input{
+    padding: 15px;
+    border: none;
+    border-radius: 45px;
+    margin: 15px;
 }
 
 
 .container{
     width: 1200px;
-    max-width: 90%;
+    max-width: 95%;
     margin:0 auto;
 }
 
@@ -58,8 +81,14 @@ ul li a i{
     color: white;
 }
 
+.search__form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
 .products{
-    width: 1000px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,6 +99,7 @@ ul li a i{
 .products ul{
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     align-items: center;
     gap: 50px;
     background-color: green;
@@ -77,11 +107,20 @@ ul li a i{
     padding: 20px;
 }
 
+.products ul li a{
+    color: yellow;
+    font-weight: 700;
+    font-size: 24px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-transform: capitalize;
+}
+
 /* Django Messages style codes */
 .btn{
     color: coral;
     background-color:green;
-    padding: 10px 20px;
+    padding:20px;
+    margin: 10px 0px;
     border-radius: 45px;
     border: none;
 }

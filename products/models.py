@@ -14,3 +14,13 @@ class Products(models.Model):
     
     def __str__(self) :
         return f"{self.company} => {self.name}"
+    
+    
+class Comment(models.Model):
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, verbose_name=" Məhsul", related_name = "comments")
+    comment_author = models.CharField(max_length=100, verbose_name = "Müştəri")
+    comment_content =models.TextField(verbose_name="Rəy")
+    comment_date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.comment_author} - {self.comment_content}"
